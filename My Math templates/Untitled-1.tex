@@ -1,0 +1,362 @@
+\documentclass[A4paper]{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}   %用来设置页边距
+\usepackage{amsmath,amsthm,amssymb,amsfonts, fancyhdr, color, comment, graphicx, environ}
+%ams-数学符号，fancyhdr-页眉页脚，color-颜色，comment-注释，graphicx-插入图片
+%environ 允许设置新环境（不确定）
+\usepackage[dvipsnames, svgnames, x11names]{xcolor}              %拓展颜色种类            
+\usepackage{mdframed}               %用于设置背景颜色
+\usepackage[shortlabels]{enumitem}  %用于调整enumrate和item的间距
+\usepackage{indentfirst}            %设置首行缩进（不确定）
+\usepackage{hyperref}               %设置引用格式
+\usepackage{setspace}               %设置行间距
+\usepackage{xifthen}                %允许使用逻辑语句
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=black,
+}
+
+\usepackage{cancel}					% 使用/删除东西（不确定）
+
+
+
+
+\date{\today}
+% 设置问题环境（灰色框框）
+\newenvironment{problem}[2][Problem]
+    { \begin{mdframed}[backgroundcolor=gray!20] \textbf{#1 #2} \\}
+    {  \end{mdframed}}
+
+%我自己的记笔记符号
+\newcommand{\myDef}[1]{\textcolor{green}{Definition.}\quad \textbf{#1}\par}
+
+
+
+
+%我定义的数学简写
+\newcommand{\real}[0]{\mathbb{R}}
+\newcommand{\realN}[0]{\mathbb{R}^N}
+\newcommand{\isInReal}[1][]{\ensuremath{\in \mathbb{R}^{ \ifthenelse{\isempty{#1}}{}{#1}}}}
+\newcommand{\isInRealN}[0]{\ensuremath{ \in \mathbb{R}^n}}
+
+
+%我使用的数学符号
+\DeclareMathOperator{\rank}{rank}           %矩阵的秩
+\DeclareMathOperator{\suchThat}{s.t.\,}  %s.t.
+
+
+
+%新定义的环境
+\theoremstyle{definition}
+\newtheorem{definition}{\textcolor{green}{Def}}[section]
+
+
+\theoremstyle{plain}
+\newtheorem*{lemma}{\textcolor{green}{Lemma}}
+\newtheorem{theorem}{\textcolor{green}{Them}}[section]
+\newtheorem*{corollary}{\textcolor{green}{Coll}}
+\newtheorem{proposition}{\textcolor{green}{Prop}}[section]
+\newtheorem*{model}{\textcolor{green}{Model}}
+\newtheorem*{HWSolution}{{Solution}}
+\newtheorem*{HWProof}{\textbf{Proof}}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{\textcolor{green}{Remark}}
+\newtheorem*{example}{\textcolor{green}{Exp}}
+\newtheorem*{eg}{E.g}
+
+\newcommand{\ConvexCombination}[2]{\ensuremath{\lbd #1 + (1 - \lbd) #2}}
+
+
+%(算法，带方框)
+\newenvironment{myAlgorithm}[2]
+    { \begin{mdframed}[backgroundcolor=gray!20] \large{\textbf{#1}} \par \normalsize#2}
+    {  \end{mdframed}}
+    
+\newcommand{\optimalProblem}[3]
+{\begin{align*}
+    #1 \quad &#2 \\
+    \suchThat\quad&#3
+\end{align*}}
+
+
+
+
+\newcommand{\myUnderstand}[1]{\textcolor{purple}{#1.}\par}
+\newcommand{\understand}[1]{\textcolor{purple}{#1.}\par}
+\newcommand{\myNewConcept}[1]{\textbf{\textcolor{red}{#1}}}
+\newcommand{\newConcept}[1]{\textbf{\textcolor{red}{#1}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%新定义的数学简写
+
+%--一些复杂解构的简写
+\newcommand{\dkh}[1]{\ensuremath{\{#1\}}}
+\newcommand{\zkh}[1]{\ensuremath{\left[ #1 \right] }}
+\newcommand{\xkh}[1]{\ensuremath{\left( #1 \right) }}  
+\newcommand{\jihe}[2]{\ensuremath{\dkh{#1:#2}}}
+\newcommand{\defeq}[0]{\ensuremath{\triangleq}}
+\newcommand{\dengjiayu}[0]{\ensuremath{\Longleftrightarrow}}
+\newcommand{\tao}[0]{\ensuremath{^T}}
+\newcommand{\greaterEqZero}[0]{\ensuremath{\geq 0}}
+\newcommand{\lessEqZero}[0]{\ensuremath{\leq 0}}
+\newcommand{\equalsOneToN}[0]{\ensuremath{= 1,2,\cdots,n}}
+\newcommand{\fromTo}[2]{\ensuremath{#1,\cdots,#2}}
+\newcommand{\equalsFromTo}[2]{\ensuremath{= #1,\cdots,#2}}
+\newcommand{\expt}[0]{\ensuremath{\backslash}}
+
+%--一些常用记号的简写
+\newcommand{\fx}[0]{\ensuremath{f(x)}}
+\newcommand{\gx}[0]{\ensuremath{g(x)}}
+\newcommand{\hx}[0]{\ensuremath{h(x)}}
+\newcommand{\xii}[0]{\ensuremath{x_i}}
+\newcommand{\xj}[0]{\ensuremath{x_j}}
+\newcommand{\yi}[0]{\ensuremath{y_i}}
+\newcommand{\yj}[0]{\ensuremath{y_j}}
+\newcommand{\ai}[0]{\ensuremath{a_i}}
+\newcommand{\aj}[0]{\ensuremath{a_j}}
+\newcommand{\bi}[0]{\ensuremath{b_i}}
+\newcommand{\bj}[0]{\ensuremath{b_j}}
+\newcommand{\xn}[0]{\ensuremath{x_n}}
+\newcommand{\xm}[0]{\ensuremath{x_m}}
+\newcommand{\an}[0]{\ensuremath{a_n}}
+\newcommand{\am}[0]{\ensuremath{a_m}}
+
+%希腊字母（简写并防止不在数学环境中）
+\newcommand{\aph}[0]{\ensuremath{\alpha}}
+\newcommand{\bt}[0]{\ensuremath{\beta}}
+\newcommand{\dt}[0]{\ensuremath{\delta}}
+\newcommand{\Dt}[0]{\ensuremath{\Delta}}
+\newcommand{\gm}[0]{\ensuremath{\gamma}}
+\newcommand{\lbd}[0]{\ensuremath{\lambda}}
+\newcommand{\eps}[0]{\ensuremath{\epsilon}}
+\newcommand{\ks}[0]{\ensuremath{\xi}}
+
+
+%----Rn相关
+\newcommand{\rn}[0]{\ensuremath{\mathbb{R}^n}}
+\newcommand{\rN}[0]{\ensuremath{\mathbb{R}^N}}
+\newcommand{\inRn}[0]{\ensuremath{ \in \mathbb{R}^n}}
+\newcommand{\inR}[0]{\ensuremath{ \in \mathbb{R}}}
+\newcommand{\xinRn}[0]{\ensuremath{x \in \mathbb{R}^n}}
+\newcommand{\xinRm}[0]{\ensuremath{x \in \mathbb{R}^m}}
+\newcommand{\xinRN}[0]{\ensuremath{x \in \mathbb{R}^N}}
+\newcommand{\xinRM}[0]{\ensuremath{x \in \mathbb{R}^M}}
+\newcommand{\sy}[0]{\ensuremath{\subseteq}}
+\newcommand{\syRn}[0]{\ensuremath{\subseteq \mathbb{R}^n}}
+\newcommand{\syRm}[0]{\ensuremath{\subseteq \mathbb{R}^m}}
+
+\newcommand{\syE}[0]{\ensuremath{\subseteq \mathbb{E}}}
+\newcommand{\inE}[0]{\ensuremath{ \in \mathbb{E}}}
+
+%常用的上下标，比如*，转置等
+\newcommand{\starof}[1]{\ensuremath{#1^*}}
+\newcommand{\xstar}[0]{\ensuremath{x^*}}
+
+
+%规划问题相关的简写
+\newcommand{\LP}[0]{\ensuremath{(LP)}}
+\newcommand{\LD}[0]{\ensuremath{(LD)}}
+
+\newcommand{\Axleb}[0]{\ensuremath{Ax \leq b}}
+\newcommand{\Axgeb}[0]{\ensuremath{Ax \geq b}}
+\newcommand{\Axeqb}[0]{\ensuremath{Ax = b}}
+
+\newcommand{\ctx}[0]{\ensuremath{c^T x}}
+\newcommand{\tx}[0]{\ensuremath{^T x}}
+\newcommand{\chuLe}[0]{\ensuremath{\backslash}}
+
+
+%一些常见规划问题一步到位
+\newcommand{\LinearProblem}[0]{\begin{align*}
+    \max\quad&c^T x \\
+    \suchThat\quad&Ax \leq b
+\end{align*}  }
+\newcommand{\LinearDual}[0]{\optimalProblem{\min}{b^T y}{A^T y = c \\ &y \leq 0}  }
+
+
+%非斜体的数学记号
+\DeclareMathOperator{\conv}{conv}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%绝对值、范数、内积、度量、集合关系
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\LOneNorm}[1]{\Vert #1 \Vert_1}
+\newcommand{\LTwoNorm}[1]{\Vert #1 \Vert_2}
+\newcommand{\LInftyNorm}[1]{\Vert #1 \Vert_\infty}
+
+
+
+%（两行大括号）
+\newcommand{\twoRowEquation}[2]{        
+\ensuremath{\left \{ \begin{aligned}
+    \ensuremath{#1}  \\
+    \ensuremath{#2}  
+\end{aligned}   
+\right.}}
+%（三行大括号）
+\newcommand{\threeRowEquation}[3]{        
+\ensuremath{\left \{ \begin{aligned*}
+    \ensuremath{#1}  \\
+    \ensuremath{#2}  \\
+    \ensuremath{#3}
+\end{aligned*}   
+\right.}}
+
+
+
+%新定义的数学符号
+\DeclareMathOperator{\st}{\ensuremath{\,\mathrm{s.t.}\,}}  %s.t.
+
+\newcommand{\im}[0]{\mathrm{im}\,}
+\newcommand{\epi}[0]{\mathrm{epi}\,}
+
+
+
+
+%新设置的环境（就一个Solution的单词）
+\newenvironment{solution}{\textbf{Solution}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\btz}[1]{\ensuremath{\overline{\mathrm{cone} }\,#1}}
+\newcommand{\btb}[1]{\ensuremath{\overline{\mathrm{conv} }\,#1}}
+\newcommand{\aff}[1]{\ensuremath{\mathrm{aff}\,#1}}
+\newcommand{\cone}[1]{\ensuremath{\mathrm{cone}\,#1}}
+\newcommand{\cl}[1]{\ensuremath{\mathrm{cl}\,#1}}
+\newcommand{\ri}[1]{\ensuremath{\mathrm{ri}\,#1}}
+\newcommand{\rbd}[1]{\ensuremath{\mathrm{rbd}\,#1}}
+
+\newcommand{\polarCone}[1]{\ensuremath{#1^{\circ}}}
+\newcommand{\ppolarCone}[1]{\ensuremath{#1^{\circ \circ}}}
+\newcommand{\neiJi}[2]{\ensuremath{\left < #1, #2 \right >}}
+\newcommand{\congEr}[0]{\ensuremath{\Longrightarrow}}
+\newcommand{\jiao}[2]{\ensuremath{\bigcap_{\small{#1}}#2}}
+\newcommand{\bing}[2]{\ensuremath{\bigcup_{\small{#1}}#2}}
+\newcommand{\jiaoFromTo}[3]{\ensuremath{\bigcap_{\small{#1}}^{\small{#2}} #3}}
+\newcommand{\bingFromTo}[3]{\ensuremath{\bigcup_{\small{#1}}^{\small{#2}} #3}}
+
+\newcommand{\qiuHe}[3]{\ensuremath{\sum_{\small{#1}}^{\small{#2}} #3}}
+\newcommand{\sumFromTo}[3]{\ensuremath{\sum_{\small{#1}}^{\small{#2}} #3}}
+\newcommand{\sumOneToN}[2]{\ensuremath{\sum_{\small{#1 = 1}}^{\small{n}} #2}}
+
+
+\newcommand{\sumIn}[2]{\ensuremath{\sum_{\small{#1}} #2}}
+
+\newcommand{\DicardProduct}[3]{\ensuremath{\bigotimes_{\small{#1}}^{\small{#2}}{#3}}}
+
+\newcommand{\xbar}[0]{\ensuremath{\overline{x}}}
+
+\newcommand{\maxIn}[1]{\ensuremath{\max \limits_{#1}}}
+\newcommand{\minIn}[1]{\ensuremath{\max \limits_{#1}}}
+\newcommand{\argmaxIn}[1]{\ensuremath{\arg \max \limits_{#1}}}
+\newcommand{\argminIn}[1]{\ensuremath{\arg \min \limits_{#1}}}
+\DeclareMathOperator{\limit}{\ensuremath{\mathrm{lim}}}
+\newcommand{\limIn}[1]{\ensuremath{\limit \limits_{#1}}}
+\newcommand{\limTo}[2]{\ensuremath{\lim \limits_{#1 \to #2}}}
+\newcommand{\limToInf}[1]{\ensuremath{\lim \limits_{#1 \to \infty}}}
+\newcommand{\limItoInf}[0]{\ensuremath{\lim \limits_{i \to \infty}}}
+\newcommand{\limntoInf}[0]{\ensuremath{\lim \limits_{n \to \infty}}}
+
+
+\DeclareMathOperator{\dom}{dom}
+\newcommand{\spans}[0]{\ensuremath{\mathrm{span}\,}}
+
+\newcommand{\zwq}[0]{\ensuremath{+\infty}}
+\newcommand{\fwq}[0]{\ensuremath{-\infty}}
+
+\theoremstyle{plain}
+\newtheorem*{myProof}{\textbf{Proof}}
+
+
+\newcommand{\Euclid}[0]{\mathbb{E}}
+
+
+\newcommand{\Sn}[0]{\ensuremath{\mathbb{S}^n}}
+\newcommand{\inSn}[0]{\in \Sn}
+
+\newcommand{\ZImpliesY}[0]{\par\ensuremath{''\implies''}\par}
+\newcommand{\YimpliesZ}[0]{\par\ensuremath{''\impliedby''}\par}
+\newcommand{\ZsyY}[0]{\par\ensuremath{''\subseteq''}\par}
+\newcommand{\YsyZ}[0]{\par\ensuremath{''\supseteq''}\par}
+
+\newcommand{\RR}[0]{\ensuremath{\mathbb{R}}}
+\newcommand{\NN}[0]{\ensuremath{\mathbb{N}}}
+
+\newcommand{\EE}[0]{\ensuremath{\mathbb{E}}}
+\newcommand{\notIn}[0]{\ensuremath{\overline{\in}}}
+
+\newcommand{\vertSpaceOf}[1]{\xkh{#1}^\perp}
+\newcommand{\contradiction}[0]{contradiction!}
+
+
+\newcommand{\NormOnefrac}[1]{\ensuremath{\frac{#1}{\norm{#1}}}}
+%xindingyi
+
+
+%日期：居中加粗字号变大
+\newcommand{\HWDate}[2]
+{\centering{\Large{\textbf{#1月 #2日}}}\par}
+
+
+%_V2022041209
+\newcommand{\eph}[1]{\textcolor{purple}{#1}}
+\newcommand{\djy}[0]{\ensuremath{\iff}}
+\newcommand{\m}[1]{\ensuremath{#1}}
+\newcommand{\und}[1]{\textcolor{purple}{#1.}\par}
+\newcommand{\ncpt}[1]{\textbf{\textcolor{red}{#1}}}
+\newcommand{\beph}[1]{\textbf{\textcolor{purple}{#1}}}
+
+%V_2022041210
+\newcommand{\complexity}[1]{\ensuremath{O(#1)}}
+\theoremstyle{plain}
+\newtheorem{porposition}{\textcolor{green}{Prop}}[section]
+\newtheorem{algorithm}{\textcolor{green}{Alg.}}
+
+%V_2022041314
+\theoremstyle{plain}
+\newtheorem*{agr}{\textcolor{green}{Algrithm}}
+
+%v_2022041409
+\newcommand{\jq}[0]{奇圈}
+
+%v_2022042714
+\theoremstyle{plain}
+\newtheorem{insight}{\textcolor{green}{Insight}}[section]
+
+\newcommand{\Rm}[0]{\ensuremath{\mathbb{R}^m}}
+\newcommand{\Rn}[0]{\ensuremath{\mathbb{R}^n}}
+
+
+% 设置页眉页脚，记得修改内容
+\pagestyle{fancy}
+\fancyhead[LO,L]{GuandaLi}                 %作者
+\fancyhead[CO,C]{ }                        %页眉批注
+\fancyhead[RO,R]{\today}
+\fancyfoot[LO,L]{}
+\fancyfoot[CO,C]{\thepage}
+\fancyfoot[RO,R]{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+\begin{titlepage}
+    \begin{center}
+        \vspace*{3cm}
+        \Huge
+        \textbf{ }\\                     %文件名
+        \vspace{1.5cm}
+        \Large
+        \textbf{李冠达}                   %作者
+        \vfill
+        学习时间：2021-2022 春季学期 \\       %备注
+        \vspace{1cm}
+        \Large
+        \today                              %日期
+    \end{center}
+\end{titlepage}
+
+\end{document}

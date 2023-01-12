@@ -1,0 +1,175 @@
+\documentclass[notheorems,compress,table]{beamer}
+\usepackage[UTF8]{ctex} % 支持中文
+% Example of a slide presentation, using Latex Beamer
+% To process the file : pdflatex presentation
+% To display : acroread presentation.pdf
+%
+%\CJKrmdefault{songti}
+
+%--------------------------PACKAGES-----------------------------
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+%\usepackage{MnSymbol}
+\usepackage{stmaryrd}
+\usepackage{colortbl}
+\usepackage{caption}
+\usepackage{comment}
+\usepackage{pdfpages}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{soul}
+
+\usepackage{tcolorbox}
+\usepackage{lipsum}
+
+\usepackage{pgf}
+\usepackage{tikz,pgfplots}
+
+%\usetheme{Antibes}
+\usetheme{Madrid}
+%\usecolortheme[named=Maroon]{structure}
+%\usecolortheme{orchid}
+%\usecolortheme{lily}
+%\usefonttheme{professionalfonts}
+
+\useoutertheme{infolines}
+\useinnertheme{circles}
+\usefonttheme[stillsansseriflarge]{serif}
+%\setbeamertemplate{footline}[frame number]
+
+\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{arrows.meta}%流程图
+\usetikzlibrary{automata,calc}
+
+
+\usepackage{graphics}
+\usepackage{subfigure}
+\usepackage[english]{babel}
+%\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{booktabs,cases}
+\usepackage{tabularx,multirow} 
+\usepackage{color}
+\usepackage{courier}
+
+\usepackage[orientation=landscape,size=custom,width=16,height=10,scale=0.5,debug]{beamerposter}
+\usepackage{mathtools}
+
+
+%---------------------Beamer Settings-------------------------------
+\setbeamertemplate{caption}[numbered]
+%\renewcommand{\thetable}{\thesection{}.\arabic{section}}
+%\usepackage{bm}
+
+
+%------------------------New Theorems----------------------------------
+\newtheorem{lemma}{引理}[section]
+\newtheorem{proposition}{命题}[section]
+\newtheorem{corollary}{Corollary}%[section]
+\newtheorem{theorem}{定理}[section]
+\newtheorem{example}{Example}%[section]
+\newtheorem{remark}{Remark}%[section]
+\newtheorem{definition}{定义}[section]
+\newtheorem{assumption}{Assumption}
+\newcommand{\ROMAN}[1]{\uppercase\expandafter{\romannumeral#1}}
+
+
+%-----------------------New Commands------------------------------
+\def\b{\bf}
+\def\ri{{\rightarrow \infty}}
+\def\d{\displaystyle}
+\def\argmax{{\rm argmax}\,}
+\def\argmin{{\rm argmin}\,}
+\def\conv{{\rm conv}\,}
+\def\affine{{\rm affine}\,}
+%\def \[{\begin{equation}}
+%\def \]{\end{equation}}
+\def\ri{{\rightarrow \infty}}
+\def\d{\displaystyle}
+\def\argmax{{\rm argmax}\,}
+\def\argmin{{\rm argmin}\,}
+\def\st{{\rm s.t.}\,}
+
+\def\green{\color{green}}
+\def \dist{\hbox{dist}}
+
+\def\x{\bar{x}}
+\def\y{\bar{y}}
+\def\q{\bar{q}}
+\def\Q{\bar{Q}}
+\def\T{\bar{T}}
+\def\I{\mathcal{I}}
+\def\J{\mathcal{J}}
+\setbeamertemplate{theorems}[numbered]
+%??????
+%\usepackage{algorithm}
+%\usepackage{algorithmic}  
+%%\usepackage{xcolor}
+%%\DeclareMathOperator*{argmin}{argmin} 
+%\floatname{algorithm}{Algorithm}
+\usepackage[boxed,ruled,commentsnumbered]{algorithm2e}
+\usepackage{algpseudocode}
+\renewcommand{\algorithmcfname}{算法}
+%\renewcommand{\algorithmicrequire}{\textbf{Input:}} 
+%\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+
+%-----------------------------Authur and Date--------------------------------
+\title[标题]{标题}
+
+\author[李冠达]{李冠达}
+ % Your name
+\institute[AMSS, CAS]{}
+%\logo{\pgfuseimage{logoname}{\vspace{-10pt}}}
+%\logo{\includegraphics[height=0.1\textwidth]{njnu.jpg}}
+\date[日期]{\normalsize 日期}
+\subject{Talks}
+
+\newcommand{\paper}[1]{\textcolor{blue}{[#1]}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+% 流程图定义基本形状
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=yellow!30]
+\tikzstyle{decision} = [diamond,aspect=2, minimum width=3cm, minimum height=0.7cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+%----------------------------at the Beginning of each Section------------------------
+\AtBeginSection[]
+{
+	\begin{frame}
+		\frametitle{目录}
+		\tableofcontents[currentsection,hideallsubsections]
+	\end{frame}
+%	    \AtBeginSubsection[]
+%	    {
+%	    	\begin{frame}
+%	    		%\tableofcontents[currentsubsection,hideothersubsections]
+%	    		 \tableofcontents[current,currentsubsection]
+%	    	\end{frame}
+%	    }
+}
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+%\beamerdefaultoverlayspecification{<+->}
+\begin{document}
+	
+	\frame{\titlepage}
+%\frame{\tableofcontents[currentsection,hideallsubsections]}
+
+
+\section{}
+\begin{frame}
+	\begin{center}
+		%{\color{red}{\Large\textbf{Thank you all for your attention!}}}\\
+		\large
+		谢谢大家！
+	\end{center}
+\end{frame}
+\end{document}
